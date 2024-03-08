@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     marginBottom: "20px",
     marginLeft: "100px",
-    marginRight:"100px",
+    marginRight: "100px",
     [theme.breakpoints.up("sm")]: {
       marginLeft: "auto",
       marginRight: "auto",
@@ -78,15 +78,18 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${URL_SERVER}/result?page=${currentPage}&pageSize=${itemsPerPage}`
+          `${URL_SERVER}/pir?page=${currentPage}&pageSize=${itemsPerPage}`
         );
         const jsonData = await response.json();
-        console.log(jsonData);
+
         setTimeout(() => {
           setData(jsonData.data);
           setTotalPages(jsonData.totalPages);
           setLoading(false);
         }, 3000);
+        const interval = setInterval(fetchData, 1000);
+
+        return () => clearInterval(interval);
       } catch (error) {
         console.error("Error fetching proctoring data:", error);
       }
@@ -150,7 +153,8 @@ function Home() {
         <Card>
           <CardContent>
             <Typography variant="h4" gutterBottom>
-              Data Kelengkapan K3
+              PROTOTIPE SISTEM PEMANTAUAN HEWAN DALAM KOMPARTEMEN
+              KUBIKEL BERBASIS IoT
             </Typography>
           </CardContent>
         </Card>
@@ -217,7 +221,7 @@ function TestimonialCard({ item, classes }) {
           alt="Avatar"
           className={classes.media}
         />
-        <Typography gutterBottom variant="h5" component="h2">
+        {/* <Typography gutterBottom variant="h5" component="h2">
           {item.name}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -230,7 +234,7 @@ function TestimonialCard({ item, classes }) {
           ) : (
             <CancelPresentationIcon style={{ color: "red" }} />
           )}
-        </Typography>
+        </Typography> */}
         <Typography variant="body2" color="textSecondary" component="p">
           {item.date}
         </Typography>

@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     maxWidth: "100%",
   },
   image: {
-    height: 70,
+    height: 400,
     borderRadius: "8%", // Membuat gambar profil bundar
     objectFit: "cover",
   },
@@ -56,9 +56,8 @@ function Detail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${URL_SERVER}/result/${username}`);
+        const response = await fetch(`${URL_SERVER}/pir/${username}`);
         const jsonData = await response.json();
-        console.log(jsonData)
         setData(jsonData.data);
         setList(jsonData.data[0]);
       } catch (error) {
@@ -82,9 +81,9 @@ function Detail() {
           </Box>
           <Box className={classes.profileDetails}>
             <Typography variant="h4" gutterBottom>
-              Nama: {list.name}
+              {list.date}
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            {/* <Typography variant="h6" gutterBottom>
               Jabatan: {list.position}
             </Typography>
             <Typography variant="h6" gutterBottom>
@@ -97,12 +96,12 @@ function Detail() {
               ) : (
                 <CancelPresentationIcon style={{ color: "red" }} />
               )}
-            </Typography>
+            </Typography> */}
           </Box>
         </Box>
       </Container>
 
-      <Container>
+      {/* <Container>
         <Typography variant="h4" gutterBottom style={{ textAlign: "left" }}>
           Log
         </Typography>
@@ -116,7 +115,7 @@ function Detail() {
             </Grid>
           ))}
         </Grid>
-      </Container>
+      </Container> */}
     </div>
   );
 }
