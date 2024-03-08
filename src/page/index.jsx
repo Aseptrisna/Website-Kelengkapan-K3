@@ -78,7 +78,7 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${URL_SERVER}/pir?page=${currentPage}&pageSize=${itemsPerPage}`
+          `${URL_SERVER}/distance?page=${currentPage}&pageSize=${itemsPerPage}`
         );
         const jsonData = await response.json();
 
@@ -86,8 +86,8 @@ function Home() {
           setData(jsonData.data);
           setTotalPages(jsonData.totalPages);
           setLoading(false);
-        }, 3000);
-        const interval = setInterval(fetchData, 1000);
+        }, 1000);
+        const interval = setInterval(fetchData, 2000);
 
         return () => clearInterval(interval);
       } catch (error) {
@@ -153,8 +153,7 @@ function Home() {
         <Card>
           <CardContent>
             <Typography variant="h4" gutterBottom>
-              PROTOTIPE SISTEM PEMANTAUAN HEWAN DALAM KOMPARTEMEN
-              KUBIKEL BERBASIS IoT
+              OPTIMALISASI SISTEM PEMANTAUAN KEAMANAN LIFT BERBASIS IoT
             </Typography>
           </CardContent>
         </Card>
@@ -221,13 +220,13 @@ function TestimonialCard({ item, classes }) {
           alt="Avatar"
           className={classes.media}
         />
-        {/* <Typography gutterBottom variant="h5" component="h2">
-          {item.name}
+        <Typography gutterBottom variant="h5" component="h2">
+         LANTAI: {item.floor}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          ID: {item.id}
+          Jumlah Orang: {item.peopleTotal}
         </Typography>
-        <Typography>
+        {/* <Typography>
           Access:{" "}
           {item.access ? (
             <CheckCircleOutlineIcon style={{ color: "green" }} />

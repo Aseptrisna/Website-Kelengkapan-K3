@@ -56,7 +56,7 @@ function Detail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${URL_SERVER}/pir/${username}`);
+        const response = await fetch(`${URL_SERVER}/distance/${username}`);
         const jsonData = await response.json();
         setData(jsonData.data);
         setList(jsonData.data[0]);
@@ -83,13 +83,13 @@ function Detail() {
             <Typography variant="h4" gutterBottom>
               {list.date}
             </Typography>
+            <Typography variant="h6" gutterBottom>
+              Lantai: {list.floor}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+            Jumlah Orang: {item.peopleTotal}
+            </Typography>
             {/* <Typography variant="h6" gutterBottom>
-              Jabatan: {list.position}
-            </Typography>
-            <Typography variant="h6" gutterBottom>
-              ID: {list.id}
-            </Typography>
-            <Typography variant="h6" gutterBottom>
               Access:{" "}
               {list.access ? (
                 <CheckCircleOutlineIcon style={{ color: "green" }} />
